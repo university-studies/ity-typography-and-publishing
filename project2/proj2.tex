@@ -1,0 +1,219 @@
+%Encoding: utf-8
+%Projekt 2. do predmetu ITY
+%Autor: Pavol Loffay, 1. rocnik BIB-30, xloffa00@stud.fit.vutbr.cz
+%Datum: 17.3.2011
+
+%Základní informace o dokumentu
+%------------------------------
+%rozměry stránky: A4
+%rozměry textové oblasti: 18x25cm
+%mezera vlevo: 1.5cm
+%mezera nahoře: 2.5cm
+%font: standardní 11pt (vzorový dokument používá kódování fontů IL2)
+
+%Poznámky: 
+%- Pomlčky a spojovníky jsou v tomto textu zadány znakem -. V dokumentu musí být správná šířka podle kontextu.
+%- V tomto textu jsou použity tyto "uvozovky". Ve výsledném dokumentu musí být uvozovky podle zadaného PDF.
+%- Vzorový dokument byl vysázen LaTeXem na školním serveru merlin těmito nástroji:
+%  latex
+%  dvips -t a4
+%  ps2pdf
+  
+%  Při použití pdflatexu je výsledný soubor vizuálně totožný, ale je dvakrát větší.
+
+\documentclass[11pt,a4paper,titlepage,twocolumn]{article}
+
+%preambule
+\usepackage[czech]{babel}
+\usepackage[top=2.5cm, left=1.5cm, text={18cm, 25cm}]{geometry}
+\usepackage[IL2]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+%\hyphenation{ma-te-ma-tic-kou}
+%\usepackage{showkeys}
+
+%ceske uvodzovky
+\newcommand\czuv[1]{\quotedblbase #1\textquotedblleft}
+%definice
+\theoremstyle{definition}
+\newtheorem{defi}{Definice}[section]
+\newtheorem{algo}[defi]{Algoritmus}
+\newtheorem{veta}{Věta}
+
+%textova cast
+\begin{document}
+%uvodna strana
+\begin{titlepage}
+	\begin{center}
+		{\Large \textsc{Fakulta informačních technologií}}\\
+		{\Large \textsc{Vysoké učení technické v~Brně}}\\
+		\vspace{\stretch{0.382}}
+		\bigskip
+		{\LARGE Typografie a publikování\,--\,2. projekt\\}
+		\medskip
+		{\Huge Sazba dokumentů a matematických výrazů}
+		%\bigskip
+		\vspace{\stretch{0.618}}	
+	\end{center}
+	\Large{\today \hfill Pavol Loffay}
+	\bigskip
+\end{titlepage}
+
+%zaciatok textu
+\section*{Úvod} 
+	V~této úloze si vyzkoušíme sazbu titulní strany, matematických vzorců, prostředí a dalších 
+	textových struktur obvyklých pro technicky zaměřené texty 
+	(například rovnice (\ref{rovnica1}) nebo definice \ref{definice1.1} na straně \pageref{definice1.1}).
+
+	Na titulní straně je využito sázení nadpisu podle optického středu s~využitím \emph{zlatého řezu}. 
+	Tento postup byl probírán na přednášce.
+
+\section{Matematický text}
+	Nejprve se podíváme na sázení matematických symbolů a výrazů v~plynulém textu. 
+	Pro množinu \begin{math} \mathnormal{V} \end{math} označuje card($\mathnormal{V}$) 
+	kardinalitu $\mathnormal{V}$.
+	Pro množinu $\mathnormal{V}$ reprezentuje $\mathnormal{V}^*$ volný monoid generovaný 
+	množinou $\mathnormal{V}$ s~operací konkatenace. 
+	Prvek identity ve volném monoidu $\mathnormal{V}^*$ značíme symbolem $\varepsilon$.
+	Nechť $\mathnormal{V^+=V^* -\{\varepsilon\}}$. Algebraicky je tedy $V^+$ volná pologrupa 
+	generovaná množinou $V$ s~operací konkatenace. Konečnou neprázdnou množinu $V$ nazvěme \emph{abeceda}. 
+	Pro $\mathnormal{w} \in V^*$ označuje $|\mathnormal{w}|$ délku řetězce $\mathnormal{w}$. 
+	Pro $W\subseteq V$ označuje occur($\mathnormal{w},W$) počet výskytů symbolů z~$W$
+	v~řetězci $\mathnormal{w}$ a sym($\mathnormal{w},i$) 
+	určuje $i$-tý symbol řetězce $\mathnormal{w}$; například sym$(abcd,3)=c$.
+
+	Nyní zkusíme sazbu definic a vět s~využitím balíku \texttt{amsthm}.
+
+	\begin{defi} \label{definice1.1}
+		\textit{Bezkontextová gramatika} je čtveřice $G=(V,T,P,S)$, kde $V$ je totální abeceda, 
+		$T\subseteq V$ je abeceda terminálů, $S\in(V-T)$ je startující symbol a~$P$ je konečná 
+		množina \emph{pravidel} tvaru $q:A\rightarrow \alpha$, kde $A\in(V-T)$, $\alpha \in V^*$ a $q$ je návěští 
+		tohoto pravidla. Nechť $N=V-T$ značí abecedu neterminálů. 
+		Pokud $q:A\rightarrow \alpha \in P$, $\gamma$, $\delta \in V^*$, $G$ provádí derivační 
+		krok z~$\gamma A\delta$ do $\gamma \alpha \delta$ podle pravidla $q:A \rightarrow \alpha$, symbolicky 
+		píšeme $\gamma A\delta \Rightarrow \gamma \alpha \delta\ [q:A \rightarrow \alpha]$ nebo 
+		zjednodušeně $\gamma A \delta \Rightarrow \gamma \alpha \delta$. Standardním způsobem definujeme 
+		$\Rightarrow^m$, kde $m\geq 0$. Dále definujeme tranzitivní uzávěr $\Rightarrow^+$ 
+		a~tranzitivně-reflexivní uzávěr $\Rightarrow^*$.
+		\smallskip
+
+		Algoritmus můžeme uvádět podobně jako definice textově, nebo využít pseudokódu vysázeného ve 
+		vhodném prostředí (například \texttt{algorithm2e}).
+	\end{defi}
+
+	\begin{algo}
+		Ověření bezkontextovosti gramatiky. Mějme gramatiku $G=(N,T,P,S)$.
+		\begin{enumerate}
+			\item Pro každé pravidlo $p \in P$ proveď test, zda $p$ na levé straně obsahuje právě jeden symbol z~$N$.
+			\item Pokud všechna pravidla splňují podmínku z~kroku $1$, tak je gramatika $G$ bezkontextová.
+		\end{enumerate}
+	\end{algo}
+
+	\begin{defi}
+		\emph{Jazyk} definovaný gramatikou $G$ definujeme jako $L(G)=\{\mathnormal{w} \in T^*\ |\ S \Rightarrow^* \mathnormal{w}\}$.
+	\end{defi}
+
+	\subsection{Podsekce obsahující větu}
+		\begin{defi}
+			Nechť $L$ je libovolný jazyk. $L$ je \emph{bezkontextový jazyk}, když a jen když $L=L(G)$, kde $G$ je 
+			libovolná bezkontextová gramatika.
+		\end{defi}
+
+		\begin{defi}
+			Množinu $\mathcal{L}_{CF}=\{L|L$ je bezkontextový jazyk$\}$ nazýváme \emph{třídou bezkontextových jazyků}.
+		\end{defi}
+
+		\begin{veta}
+			\emph{Nechť} $L_{abc}=\{a^nb^nc^n|n \geq 0\}$. \emph{Platí, že} $L_{abc} \not \in \mathcal{L}_{CF}$.
+		\end{veta}
+
+		\begin{proof} 
+			Důkaz se provede pomocí Pumping lemma pro bezkontextové jazyky, kdy ukážeme, 
+			že není možné, aby platilo, což bude implikovat pravdivost věty $1$.
+		\end{proof}
+
+\section{Rovnice a odkazy}
+
+	Složitější matematické formulace sázíme mimo plynulý text. Lze umístit několik výrazů na jeden řádek, 
+	ale pak je třeba tyto vhodně oddělit, například příkazem \verb|\quad|.
+
+	$$\sqrt[x^2]{y_0^3} \quad \mathbb{N}=\{1,2,3,\ldots\} \quad x^{y^{y}} \neq x^{yy}  \quad z_{i_{j}} \not \equiv z_{ij}$$
+
+
+	V~rovnici (\ref{rovnica1}) jsou využity tři typy závorek s~různou explicitně definovanou velikostí.
+	
+	\begin{eqnarray} \label{rovnica1}
+		x & = & -\bigg\{ \Big[ \big( a+b \big)^{c}*d \Big] +1 \bigg\} \\ 
+	 	\nonumber s & = & \sqrt{\frac{1}{n} \sum_{i=1}^r p_i(x_i-x)^2}
+	\end{eqnarray}
+	%$$s=\sqrt{\frac{1}{n} \sum_{i=1}^n p_i(x_i-x)^2}$$
+
+	V~této větě vidíme, jak vypadá implicitní vysázení limity $\lim_{n \rightarrow \infty} f(n)$
+	v~normálním odstavci textu. Podobně je to i s~dalšími symboly jako $\sum_{1}^n$ či 
+	$\bigcup_{A \in \mathcal{B}}$. V~případě vzorce $\lim\limits_{x \rightarrow 0} \frac{\sin{x}}{x} = 1$ 
+	jsme si vynutili méně úspornou sazbu příkazem \verb|\limits|.
+
+	\begin{eqnarray}
+		\int\limits _a^b f(x)\,\mathrm{d}x &= &-\int_b^a f(x)\,\mathrm{d}x\\
+		\overline{\overline{A} \wedge \overline{B}} & = & \overline{\overline{A \vee B}}
+	\end{eqnarray}
+
+\section{Složené zlomky}
+	Při sázení složených zlomků dochází ke zmenšování použitého písma v~čitateli a jmenovateli. Toto chování 
+	není vždy žádoucí, protože některé zlomky potom mohou být obtížně čitelné. 
+
+	V~těchto případech je možné ručně nastavit standardní stupeň písma v~podvýrazech pomocí \verb|\displaystyle| 
+	u~vysázených vzorců nebo pomocí \verb|\textstyle| u~vzorců, 
+	které jsou součástí textu. Srovnejte:
+	$$\frac{\textstyle\frac{a^2}{x+y}-\textstyle\frac{\scriptstyle\frac{a}{b}}{x-y}}{\textstyle\frac{a+b}{a-b}-1} \quad  
+	\frac{\displaystyle\frac{a^2}{x+y}-\displaystyle\frac{\displaystyle\frac{a}{b}}{x-y}}{\displaystyle\frac{a+b}{a-b}-1}$$
+	
+	Tento postup lze použít nejen u~zlomků.
+	$$\prod_{i=0}^{m-1}\ (n-i) = \underbrace{n(n-i)(n-2) \ldots (n-m+1)}_{\displaystyle{m}\ \mbox{je počet činitelů}}$$ 
+
+\section{Matice}
+	Pro sázení matic se velmi často používá prostředí \texttt{array} a závorky (\verb|\left|, \verb|\right|).
+
+	$$\left(
+			\begin{array}{ccc}
+				a+b & a-b \\
+				\widetilde{c+d} & \tilde{b}   \\
+				\vec{a} & \underleftrightarrow{AC}   \\
+				\alpha & \aleph  
+			\end{array}
+		\right)$$
+
+	$$\mathbf{A}=\left\|
+			\begin{array}{cccc}
+				a_{11} & a_{12} & \ldots & a_{1n} \\
+				a_{21} & a_{22} & \ldots & a_{2n} \\
+				\vdots & \vdots & \ddots & \vdots \\
+				a_{m1} & a_{m2} & \ldots & a_{mn}
+			\end{array}
+		\right\|$$
+
+	$$\left|
+			\begin{array}{cc}
+				k & l \\
+				m & n 
+			\end{array}
+		\right| =kn-lm$$
+
+	Prostředí \texttt{array} lze úspěšně využít i jinde.
+
+	$$	{n \choose k}
+		=\left\{ 
+		\displaystyle\begin{array}{ll}
+			0 &  \quad \mbox{pro}\ k < 0\ \mbox{nebo}\ k > n\\
+			\frac{n!}{k!(n-k)!} & \quad \mbox{pro}\ 0 \leq k \leq n
+		\end{array}
+	\right.$$
+
+\section{Závěrem}
+	V případě, že budete potřebovat vyjádřit matema\-tickou konstrukci nebo symbol a nebude se 
+	Vám dařit jej nalézt v~samotném \LaTeX u, doporučuji prostudovat možnosti balíku maker \AmS -\LaTeX.
+	Analogická poučka platí obecně pro jakoukoli konstrukci v \TeX u.
+\end{document}

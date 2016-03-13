@@ -1,0 +1,62 @@
+%Encoding: utf-8
+%Projekt 4. do predmetu ITY
+%Autor: Pavol Loffay, 1. rocnik BIB-30, xloffa00@stud.fit.vutbr.cz
+%Datum: 21.4.2011
+
+\documentclass[11pt,a4paper,titlepage]{article}
+
+
+\usepackage[czech]{babel}
+\usepackage[top=2.5cm, left=1.5cm, text={18cm, 25cm}]{geometry}
+\usepackage[IL2]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%ceske uvodzovky
+\newcommand\czuv[1]{\quotedblbase #1\textquotedblleft}
+%url pre cesku normu
+\usepackage{url}
+\DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>} \urlstyle{tt}}
+
+%textova cast
+\begin{document}
+%uvodna strana
+\begin{titlepage}
+	\begin{center}
+		{\Large \textsc{Fakulta informačních technologií}}\\
+		{\Large \textsc{Vysoké učení technické v~Brně}}\\
+		\vspace{\stretch{0.382}}
+		\bigskip
+		{\LARGE Typografie a publikování\,--\,4. projekt\\}
+		\medskip
+		{\Huge Bibliografické citace}
+		%\bigskip
+		\vspace{\stretch{0.618}}
+	\end{center}
+	\Large{\today \hfill Pavol Loffay}
+	\bigskip
+\end{titlepage}
+
+
+\section{Typografia}
+	Systém \LaTeX\ vám umožní vytvárať profesionálne vysádzané dokumenty viz \cite{latex:rybicka}.
+	Pred začatím práce s systémom je vhodné si nainštalovať všetky balíčky, 
+	ktoré začínajú slovom \emph{tetex} viz \cite{michal:svamberg:root}. Pričom niektoré 
+	funcie \LaTeX u neodpovedajú českej norme: \textit{\czuv{standardní BibTeXové styly nejsou přeloženy 
+	do češtiny a formátování položek nesouhlasí s normou}} \cite{david:martinek:latex}.
+	Pokiaľ sa rozhodnete vytvoriť prezentáciu je vlhodné použiť rozširujúcu triedu \emph{Beamer}, ktorá 
+	spôsobí, že príprava bude shodná s prípravou bežného dokumentu, viz \cite{petr:zelenka:abclinux}.
+	Sázdanie matematiky je veľmi veľkou silou systému \LaTeX\ viz \cite{latex:math}.
+	Pri správnom použití odsadzovania a členenia dokumentu môžeme dosiahnuť, že aj zdrojový súbor 
+	bude veľmi prehľadný. Existuje mnoho editorov pre pohodlnú prácu  viz \cite{latex:bakalarka}.
+	Systém \LaTeX\ je svojou syntaxov a členitosťou podobný programovacím jazykom viz \cite{latex:diplomovka}.
+	
+	\noindent Ďalej by som spomenul, že kozmický program z NASA je ohrozený viz \cite{cio:clanok}.
+	V dnešnom svete IT je veľmi ťažké sa presadiť, hlavne na svetovej úrovni pretože trh je
+	preplnený viz. \cite{cio:casopis}. Keď už hovorím o presadení sa v spoločnosti na globálnej úrovni je
+	nutné spomenúť, že plynulé ovládanie alglického jazyka je až nutné viz \cite{typo:clanok}.
+
+\newpage
+\bibliographystyle{czechiso}
+\bibliography{citacie}
+
+\end{document}

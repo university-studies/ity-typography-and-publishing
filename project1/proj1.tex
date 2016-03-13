@@ -1,0 +1,59 @@
+\documentclass[10pt,a4paper,twocolumn]{article}
+
+%preambule
+\usepackage[czech]{babel}
+\usepackage[top=2.5cm, left=1.5cm, text={18cm, 25cm}]{geometry}
+\usepackage[IL2]{fontenc}
+\usepackage[utf8]{inputenc}
+\newcommand\czuv[1]{\quotedblbase #1\textquotedblleft}
+
+%textova cast
+\begin{document} 
+
+\title{Typografie a publikování\\1. projekt}
+\author{Pavol Loffay\\xloffa00@stud.fit.vutbr.cz}
+\date{}
+\maketitle
+
+\section{Hladká sazba}
+Hladká sazba je sazba z jednoho stupně, druhu a řezu písma sázená na stanovenou šířku odstavce. Je složena z odstavců, které obvykle začínají zarážkou, ale mohou být sázeny i bez zarážky\,--\,rozhodující je celková grafická úprava. Věty nesmí začínat číslicí.
+
+Barevné zvýraznění, či podtrhávání slov se zde také nepoužívá. Hladká sazba je určena především pro delší texty, jako je například beletrie. Porušení konzistence sazby působí v textu rušivě a unavuje čtenářův zrak.
+
+\section{Smíšená sazba}
+
+Smíšená sazba má o něco volnější pravidla. Klasická hlad\-ká sazba se někdy doplňuje o další řezy písma pro~zvýraznění důležitých pojmů. Existuje \czuv{pravidlo}:
+
+\begin{quote}Čím více druhů, řezů, velikostí, barev písma a~jiných efektů použijeme, tím profesionálněji bude dokument vypadat. Čtenář tím bude nadšen!\end{quote}
+
+\textsc{Tímto pravidlem se nikdy nesmíte řídit.} \textsf{Příliš časté} zvýrazňování \texttt{textových elementů} a změny {\small velikosti} {\large písma} {\Large jsou} {\LARGE známkou} {\textbf {\huge {amatérismu}} autora a působí \textit{\textbf {velmi} rušivě.} Dobře navržený dokument nemá obsahovat více než 4 řezy či druhy písma. Dobře navržený dokument je decentní, ne chaotický.
+
+Důležitým znakem správně vysázeného dokumentu je konzistentní používání různých druhů zvýraznění. To například může znamenat, že \textbf {tučný řez} písma bude vyhrazen pouze pro klíčová slova, \textit{skloněný řez} pouze pro doposud neznámé pojmy a nebude se to míchat. Skloněný řez nepůsobí tak rušivě a používá se častěji. V~\LaTeX u jej sázíme raději příkazem \verb|\emph{text}| než \verb|\textit{text}|.
+
+Smíšená sazba se nejčastěji používá pro sazbu vědeckých článků a technických zpráv. U~delších dokumentů vědeckého či technického charakteru je zvykem upozornit čtenáře na význam různých typů zvýraznění v~úvodní kapitole.
+
+\section{Další rady:}
+\begin{itemize}
+	\item Nadpis nesmí končit dvojtečkou a nesmí obsahovat odkazy (na obrázky, citace,\,\dots).
+	\item Nadpisy, číslování a odkazy na číslované elementy nesmí být psány ad-hoc ručně.
+	\item Výčet ani obrázek nesmí začínat hned pod nadpisem a nesmí tvořit celou kapitolu.
+	\item Poznámky pod čarou$^1$ používejte opravdu střídmě. (Šetřete i s~textem v~závorkách.)
+	\item Nepoužívejte velké množství malých obrázků. Zvažte, zda je nelze seskupit do jednoho, či více větších obrázků.
+\end{itemize}
+
+\section{České odlišnosti}
+Česká sazba se oproti okolnímu světu v~některých aspektech mírně liší. Jednou z~odlišností je sazba uvozovek. Uvozovky se v~češtině používají převážně pro zobrazení přímé řeči. V~menší míře se používají také pro zvýraznění přezdívek a ironie. V~češtině se používá tento \czuv{typ uvozovek} namísto anglických ``uvozovek''.
+
+Ve smíšené sazbě se řez uvozovek řídí řezem prvního uvozovaného slova. Pokud je uvozována celá věta, sází se koncová tečka před uvozovku, pokud se uvozuje slovo nebo část věty, sází se tečka za uvozovku.\medskip
+
+Druhou odlišností je pravidlo pro sázení konců řádků. V~české sazbě by řádek neměl končit osamocenou jednopísmennou předložkou nebo spojkou (spojkou \czuv{a} končit může při sazbě do 25 liter). Abychom \LaTeX u zabránili v~sázení osamocených předložek, vkládáme mezi předložku a slovo nezlomitelnou mezeru znakem \verb|~| (vlnka, tilda). Pro automatické doplnění vlnek slouží volně šiřitelný program \emph{vlna} od pana Olšáka$^2$.
+
+Principiálně lepší řešení nabízí balík \emph{encxvlna}, od pánů Olšáka a Wagnera$^3$. Zatím ovšem není ve standardních distribucích \LaTeX u dostupný.
+
+\section{Závěr}
+Jistě jste postřehli, že tento dokument obsahuje schválně několik typografických prohřešků. Jeden odstavec v sekci 2 a celá sekce 3 obsahují typografické chyby. V kontextu celého textu je jistě snadno najdete. Je dobré znát možnosti \LaTeX u, ale je také nutné vědět, kdy je nepoužít.
+
+\footnote[1]{Příliš mnoho poznámek pod čarou čtenáře zbytečně rozptyluje.}
+\footnote[2]{Viz \texttt{ftp://math.feld.cvut.cz/pub/olsak/vlna/}.}
+\footnote[3]{Viz \texttt{http://tug.ctan.org/pkg/encxvlna}.}
+\end{document}
